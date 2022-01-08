@@ -19,10 +19,4 @@ public class PrimatyKeyTriggerFunctionCreator {
 
         return query;
     }
-
-    public static void main(String[] args) {
-        System.out.println(new PrimaryKeyTriggerCreator().createTrigger("xtism"));
-        System.out.println("--------------------");
-        System.out.println(new PrimatyKeyTriggerFunctionCreator().createFunction("xtism", "id_xtism"));
-    }
 }

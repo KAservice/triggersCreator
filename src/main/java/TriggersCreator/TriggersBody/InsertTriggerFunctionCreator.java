@@ -21,7 +21,7 @@ public class InsertTriggerFunctionCreator {
                 "    COST 100 \n" +
                 "    VOLATILE PARALLEL UNSAFE \n" +
                 "AS $BODY$\n" +
-                "DECLARE  id_xtism BIGINT ;\n" +
+                "DECLARE  idXtism BIGINT ;\n" +
                 "DECLARE  add_in_tism char ;\n" +
                 "DECLARE  idext_base BIGINT ;\n" +
                 "DECLARE  idext_data_out BIGINT ;\n";
@@ -50,20 +50,20 @@ public class InsertTriggerFunctionCreator {
         result = result + "     end if;\n";
 
         result = result + "  \n" ;
-        result = result + "  id_xtism=gen_id('GEN_XTISM_ID'); \n";
+        result = result + "  idXtism=nextval('GEN_XTISM_ID'); \n";
         result = result + "  \n" ;
 
-        result = result+"           insert into xtism (xtism.id_xtism,  \n";
-        result = result+"                       xtism.operation_xtism ,   /*операция 1 вставка 2 изменение 3 удаление 4 отмена 5 проведение*/    \n";
-        result = result+"                       xtism.type_object_xtism , /*тип объекта 1 справочник 2 документ 3 регистр*/  \n ";
-        result = result+"                       xtism.name_table_xtism ,  /*имя таблицы*/             \n ";
-        result = result+"                       xtism.name_field_id_xtism , /*имя поля первичного ключа*/  \n ";
-        result = result+"                       xtism.value_field_id_xtism ,/* значение первичного ключа*/  \n";
-        result = result+"                       xtism.idbase_xtism,         /* id базы владельца, для фильтрации */   \n";
-        result = result+"                       xtism.idext_base_xtism,         /* id внешней базы для квитанции */   \n";
-        result = result+"                       xtism.idext_dataout_xtism)         /* id_data_out для квитанции при внешнем обновлении */   \n";
+        result = result+"           insert into xtism (id_xtism,  \n";
+        result = result+"                       operation_xtism ,   /*операция 1 вставка 2 изменение 3 удаление 4 отмена 5 проведение*/    \n";
+        result = result+"                       type_object_xtism , /*тип объекта 1 справочник 2 документ 3 регистр*/  \n ";
+        result = result+"                       name_table_xtism ,  /*имя таблицы*/             \n ";
+        result = result+"                       name_field_id_xtism , /*имя поля первичного ключа*/  \n ";
+        result = result+"                       value_field_id_xtism ,/* значение первичного ключа*/  \n";
+        result = result+"                       idbase_xtism,         /* id базы владельца, для фильтрации */   \n";
+        result = result+"                       idext_base_xtism,         /* id внешней базы для квитанции */   \n";
+        result = result+"                       idext_dataout_xtism)         /* id_data_out для квитанции при внешнем обновлении */   \n";
 
-        result = result+"              values (id_xtism,  \n";
+        result = result+"              values (idXtism,  \n";
         result = result+"                     1, \n ";
         result = result+"                    " + docType + ", \n";
         result = result+"                     '" + tableName + "', \n";
@@ -83,13 +83,13 @@ public class InsertTriggerFunctionCreator {
                 continue;
             }
             result = result + "if (not(new." + fieldName + " is null)) then  \n";
-            result = result + "   insert into xtism_fields (xtism_fields.idxtism_xtism_fields,  \n";
-            result = result + "                             xtism_fields.field_name_xtism_fields, \n";
-            result = result + "                             xtism_fields.old_value_xtism_fields, \n";
-            result = result + "                             xtism_fields.new_value_xtism_fields, \n";
-            result = result + "                             xtism_fields.type_xtism_fields) \n";
+            result = result + "   insert into xtism_fields (idxtism_xtism_fields,  \n";
+            result = result + "                             field_name_xtism_fields, \n";
+            result = result + "                             old_value_xtism_fields, \n";
+            result = result + "                             new_value_xtism_fields, \n";
+            result = result + "                             type_xtism_fields) \n";
 
-            result = result + "                     values (id_xtism,  \n";
+            result = result + "                     values (idXtism,  \n";
             result = result + "                             '" + fieldName + "',\n";
 
             //старое значение
