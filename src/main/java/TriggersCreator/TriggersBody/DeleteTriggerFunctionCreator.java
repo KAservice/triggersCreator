@@ -60,8 +60,8 @@ public class DeleteTriggerFunctionCreator {
         result = result + "                    " + docType + ", \n";
         result = result + "                     '" + tableName + "', \n";
         result = result + "                     '" + nameFieldPk + "', \n";
-        result = result + "                     new." + nameFieldPk + ", \n";
-        result = result + "                     new." + nameFieldIdBase + "); \n";
+        result = result + "                     old." + nameFieldPk + ", \n";
+        result = result + "                     old." + nameFieldIdBase + "); \n";
 
 
         result = result + "	   \n ";
